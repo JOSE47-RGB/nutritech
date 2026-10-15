@@ -1,0 +1,65 @@
+{
+  "commit": "80c8db44575425463423ed07bddfd79a3a3301b9",
+  "files": [
+    {
+      "file": "weianthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/weianthro.txt",
+      "bytes": 111813,
+      "sha256": "bc15a6a623dd1d5beaeed1497666332aa54bc4ccd15ff9658c487d79694ab77b",
+      "indicator": "P_E",
+      "axis": "age",
+      "min": 0,
+      "max": 1826,
+      "method": null,
+      "header": ["sex", "age", "l", "m", "s"]
+    },
+    {
+      "file": "lenanthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/lenanthro.txt",
+      "bytes": 100323,
+      "sha256": "709f7a11881451daf7820f022d363d5bdb93746b5361d6bd9218af6ff838e0c2",
+      "indicator": "T_E",
+      "axis": "age",
+      "min": 0,
+      "max": 1826,
+      "method": null,
+      "header": ["sex", "age", "l", "m", "s", "loh"]
+    },
+    {
+      "file": "bmianthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/bmianthro.txt",
+      "bytes": 120786,
+      "sha256": "78a4364e99303114fb2c458d28d64c6d10ac33832a5d5b2d437bc5cea1c93a0d",
+      "indicator": "IMC_E",
+      "axis": "age",
+      "min": 0,
+      "max": 1826,
+      "method": null,
+      "header": ["sex", "age", "l", "m", "s", "loh"]
+    },
+    {
+      "file": "wflanthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/wflanthro.txt",
+      "bytes": 43302,
+      "sha256": "ad470cf41b147bd2a16026e57fd17968df7bf746b9f0bf2ff85df95239643778",
+      "indicator": "P_T",
+      "axis": "length",
+      "min": 450,
+      "max": 1100,
+      "method": "LONGITUD_ACOSTADO",
+      "header": ["sex", "length", "l", "m", "s", "lorh"]
+    },
+    {
+      "file": "wfhanthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/wfhanthro.txt",
+      "bytes": 37158,
+      "sha256": "0050d31041c2f7d4f8a34f27e8066fd73a24806835b9e4a0de1a7ee46d54d582",
+      "indicator": "P_T",
+      "axis": "height",
+      "min": 650,
+      "max": 1200,
+      "method": "TALLA_DE_PIE",
+      "header": ["sex", "height", "l", "m", "s", "lorh"]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "revisado_en": "2026-09-17T03:23:01.513Z",
+  "version": "OMS-CRECIMIENTO-BORRADOR-1",
+  "estado": "BORRADOR",
+  "fuente_sha256": "7055ebb987a01492095aca906be9cf2cd233529589515b4f362e009263930916",
+  "revision_tecnica": {
+    "reglas": 20,
+    "indicadores": 4,
+    "huecos": 0,
+    "solapamientos": 0
+  },
+  "revision_clinica": "PENDIENTE",
+  "prioridades": "PENDIENTES",
+  "reglas_activadas": false,
+  "escritura_en_base": false
+}

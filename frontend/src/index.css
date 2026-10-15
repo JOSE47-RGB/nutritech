@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-institucional: #2563A6;
+  --color-azul-claro: #E8F1FA;
+  --color-salud: #2E8B70;
+  --color-verde-claro: #E8F5EF;
+  --color-advertencia: #E89532;
+  --color-alerta: #D9534F;
+  --color-fondo: #F4F6F8;
+  --color-texto: #2F3A45;
+  --color-secundario: #6B7280;
+}
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+body { margin: 0; min-width: 320px; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; }

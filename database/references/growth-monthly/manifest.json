@@ -1,0 +1,37 @@
+{
+  "version": "OMS-2006-mensual-1",
+  "consultado_en": "2026-10-05",
+  "sha256": "4625a5d0d9b1348588f75a73605ebd785d5e764a3a3a81b8fbc2ba1b1ec5d987",
+  "fuentes": [
+    {
+      "archivo": "wfa-boys.pdf",
+      "url": "https://cdn.who.int/media/docs/default-source/child-growth/child-growth-standards/indicators/weight-for-age/wfa-boys-0-5-zscores.pdf",
+      "sha256": "ca6437e29134dee2951736f25905b8d60a07255c987b28fce7a6a639fca24ab8"
+    },
+    {
+      "archivo": "wfa-girls.pdf",
+      "url": "https://cdn.who.int/media/docs/default-source/child-growth/child-growth-standards/indicators/weight-for-age/wfa-girls-0-5-zscores.pdf",
+      "sha256": "2ecadc34b59b330930cb228cb0ce46f243c400ca702dcf618ac010249cbf1df9"
+    },
+    {
+      "archivo": "lfa-boys.pdf",
+      "url": "https://cdn.who.int/media/docs/default-source/child-growth/child-growth-standards/indicators/length-height-for-age/lfa_boys_0_2_zscores.pdf",
+      "sha256": "a3cee0ae2f50a7bc84d4de023f1ba0c29389522110f1a4bc858b6b011a4a3ea4"
+    },
+    {
+      "archivo": "lfa-girls.pdf",
+      "url": "https://cdn.who.int/media/docs/default-source/child-growth/child-growth-standards/indicators/length-height-for-age/lfa_girls_0_2_zscores.pdf",
+      "sha256": "a5895dcfacfc6de97515860e89456a01680ccd6e626f371dc8c59c23f0a96446"
+    },
+    {
+      "archivo": "hfa-boys.pdf",
+      "url": "https://cdn.who.int/media/docs/default-source/child-growth/child-growth-standards/indicators/length-height-for-age/hfa_boys_2_5_zscoresba2ba0820f064f4abf5915abac01e894.pdf",
+      "sha256": "a8b1093776be24ea0d9d985c7b7a19ab1eb0dfc9122ef5b038f702025061b21f"
+    },
+    {
+      "archivo": "hfa-girls.pdf",
+      "url": "https://cdn.who.int/media/docs/default-source/child-growth/child-growth-standards/indicators/length-height-for-age/hfa_girls_2_5_zscores.pdf",
+      "sha256": "c6ff83bc671ac6f034baf7b434734690eddd861b7487fb1adf539bfe5c98a128"
+    }
+  ]
+}

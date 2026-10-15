@@ -1,0 +1,41 @@
+{
+  "modo": "simulacion",
+  "patron": "OMS-2006",
+  "estado": "LISTO_PARA_IMPORTAR",
+  "commit": "80c8db44575425463423ed07bddfd79a3a3301b9",
+  "parametros_edad": 10962,
+  "parametros_talla": 2404,
+  "patron_activo": false,
+  "tablas": [
+    {
+      "archivo": "weianthro.txt",
+      "indicador": "P_E",
+      "filas": 3654,
+      "sha256": "bc15a6a623dd1d5beaeed1497666332aa54bc4ccd15ff9658c487d79694ab77b"
+    },
+    {
+      "archivo": "lenanthro.txt",
+      "indicador": "T_E",
+      "filas": 3654,
+      "sha256": "709f7a11881451daf7820f022d363d5bdb93746b5361d6bd9218af6ff838e0c2"
+    },
+    {
+      "archivo": "bmianthro.txt",
+      "indicador": "IMC_E",
+      "filas": 3654,
+      "sha256": "78a4364e99303114fb2c458d28d64c6d10ac33832a5d5b2d437bc5cea1c93a0d"
+    },
+    {
+      "archivo": "wflanthro.txt",
+      "indicador": "P_T",
+      "filas": 1302,
+      "sha256": "ad470cf41b147bd2a16026e57fd17968df7bf746b9f0bf2ff85df95239643778"
+    },
+    {
+      "archivo": "wfhanthro.txt",
+      "indicador": "P_T",
+      "filas": 1102,
+      "sha256": "0050d31041c2f7d4f8a34f27e8066fd73a24806835b9e4a0de1a7ee46d54d582"
+    }
+  ]
+}

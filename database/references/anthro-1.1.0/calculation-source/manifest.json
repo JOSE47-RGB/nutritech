@@ -1,0 +1,132 @@
+[
+  {
+    "file": "z-score-helper.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-helper.R",
+    "sha256": "a5c9889721d1194552c9a07f84aeb01ad2cbf748082320fcdbbec17d96cebd67"
+  },
+  {
+    "file": "z-score-weight-for-lenhei.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-weight-for-lenhei.R",
+    "sha256": "10bcca5384aaf51ffc43fd5286984ce81c129f2582f91f98f15d91fb8110d4cb"
+  },
+  {
+    "file": "z-score.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score.R",
+    "sha256": "4547b068083e276db3799679b9e488fcc8a8da89e4142ae9f45a7ba75354155c"
+  },
+  {
+    "file": "z-score-bmi-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-bmi-for-age.R",
+    "sha256": "c354498e8c0cb5331959374c8bff7f1637f6ba628ae6a83e2a13f06664823537"
+  },
+  {
+    "file": "z-score-length-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-length-for-age.R",
+    "sha256": "97cab11a004fff494408d4b60b4ffa6c8d8a0b66217526c6f9181c4a7e49dd28"
+  },
+  {
+    "file": "z-score-weight-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-weight-for-age.R",
+    "sha256": "61d358f6b254a2b8c1b0e82e8b61565381a99ff26ae38656ecc452cdbda6ac88"
+  },
+  {
+    "file": "test-zscores.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/tests/testthat/test-zscores.R",
+    "sha256": "4f028790f47020a2fa5b90f6c4317503cbb3d1c7ff12acfd8a70a0bffac07f1e"
+  },
+  {
+    "file": "test-zscore-weight-for-lenhei.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/tests/testthat/test-zscore-weight-for-lenhei.R",
+    "sha256": "f83be4cde5054e81a3bd72360d43b522006429fcbdcf51e876d549e42db7bbf1"
+  },
+  {
+    "file": "test-zscore-weight-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/tests/testthat/test-zscore-weight-for-age.R",
+    "sha256": "0d257221708e79463f8748a4740424c7f27d472cdf4b3975aeaacff3d4111768"
+  },
+  {
+    "file": "anthro-package.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/anthro-package.R",
+    "sha256": "9c59506e42e90d5cdfa06c658a63c076fcff9e604740d6d10fc107752a686125"
+  },
+  {
+    "file": "api.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/api.R",
+    "sha256": "181f9e9d4ab886f496c1e516c606c406ffadac1794a335b61b85089ebf5d0be1"
+  },
+  {
+    "file": "assertions.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/assertions.R",
+    "sha256": "e09b9a0133578adec07e1bf841f9ea3b657bfad1f55fa443f90cea78738a78ab"
+  },
+  {
+    "file": "prevalence-compute-api.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/prevalence-compute-api.R",
+    "sha256": "da2c0bd596179ed86a7a855e6c29a7553058809de606f409a0433b0cc5e07af7"
+  },
+  {
+    "file": "prevalence-hybrid-sw.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/prevalence-hybrid-sw.R",
+    "sha256": "1ce3daf77f9ccb8bc5f9a16828d10c8479867b5d16403ddb2399f8894919b3b2"
+  },
+  {
+    "file": "prevalence-simple.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/prevalence-simple.R",
+    "sha256": "3968c0ac23770e2fd123da513a047e124b2e3006660956a736941c4ced602583"
+  },
+  {
+    "file": "prevalence-survey.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/prevalence-survey.R",
+    "sha256": "6e89a8d2ba5fdb0b1cc024f873116fb7b2355173a8e2456b7c1563f8d4ffcf63"
+  },
+  {
+    "file": "prevalence.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/prevalence.R",
+    "sha256": "21be468123811c9a65fc909045812c2d9e1206d5d2efd66c80b52b6eba19726d"
+  },
+  {
+    "file": "utils.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/utils.R",
+    "sha256": "deb236da3fb7f8445febad61b61a04def980d4b92452d597274025311a6ae249"
+  },
+  {
+    "file": "z-score-arm-circumference-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-arm-circumference-for-age.R",
+    "sha256": "b5384cde6ab444208dd37e516820410eaf6e4c64b2b6f9ffa1fc0740b13b2382"
+  },
+  {
+    "file": "z-score-head-circumference-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-head-circumference-for-age.R",
+    "sha256": "7995a630f8a9d2904145063b4b2d368671bb81ff3ad8dd6fb1ef56948830615a"
+  },
+  {
+    "file": "z-score-subscapular-skinfold-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-subscapular-skinfold-for-age.R",
+    "sha256": "e594e8699dbebbf188339f994e34257d77bdbb428c5c590fd563a02a45360796"
+  },
+  {
+    "file": "z-score-triceps-skinfold-for-age.R",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/R/z-score-triceps-skinfold-for-age.R",
+    "sha256": "a9894d6a1a416fbe8cae9880c59bcf04b49c12f2e84584ddf398b128c4dbc018"
+  },
+  {
+    "file": "acanthro.txt",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/acanthro.txt",
+    "sha256": "1b588802bc66534abb42ead27fe6f8e8d62b26967d764eecf16d0f4a8660a7bd"
+  },
+  {
+    "file": "hcanthro.txt",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/hcanthro.txt",
+    "sha256": "e794e46f06b91223ad2c6435148dc08794a1d75b67613a652c3151201a98bf7c"
+  },
+  {
+    "file": "ssanthro.txt",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/ssanthro.txt",
+    "sha256": "3e6e1bce0cd87998b5f061a44730860f1393cf8f6b1f5545f80b372085b40ea1"
+  },
+  {
+    "file": "tsanthro.txt",
+    "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/tsanthro.txt",
+    "sha256": "babc2a2a6252080f4ad9ca39a27e59248142820add3151e76d959dd104146a48"
+  }
+]

@@ -1,0 +1,766 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model alertas {
+ orientacion_id BigInt? @db.UnsignedBigInt
+ tipo_aviso String? @db.VarChar(30)
+ regla_aviso String? @db.VarChar(100)
+ version_politica String? @db.VarChar(50)
+ revision Int @default(0) @db.UnsignedInt
+ orientacion orientaciones_guardadas? @relation(fields: [orientacion_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_alerta_orientacion")
+ @@unique([orientacion_id,regla_aviso,version_politica],map: "uk_alerta_orientacion")
+  id                                      BigInt               @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico                          String               @unique(map: "uk_alertas_codigo_publico") @db.Char(26)
+  resultado_indicador_id                  BigInt?               @unique(map: "uk_alerta_por_resultado") @db.UnsignedBigInt
+  nivel                                   alertas_nivel
+  titulo                                  String               @db.VarChar(160)
+  mensaje                                 String               @db.VarChar(600)
+  estado                                  alertas_estado       @default(PENDIENTE)
+  generada_en                             DateTime             @default(now())
+  asignada_a                              BigInt?              @db.UnsignedBigInt
+  revisada_por                            BigInt?              @db.UnsignedBigInt
+  revisada_en                             DateTime?
+  observacion_revision                    String?              @db.Text
+  usuarios_alertas_asignada_aTousuarios   usuarios?            @relation("alertas_asignada_aTousuarios", fields: [asignada_a], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_alertas_asignada")
+  resultados_indicador                    resultados_indicador? @relation(fields: [resultado_indicador_id], references: [id], onUpdate: Restrict, map: "fk_alertas_resultado")
+  usuarios_alertas_revisada_porTousuarios usuarios?            @relation("alertas_revisada_porTousuarios", fields: [revisada_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_alertas_revisor")
+  historial_alerta                        historial_alerta[]
+
+  @@index([revisada_por], map: "fk_alertas_revisor")
+  @@index([asignada_a, estado, generada_en(sort: Desc)], map: "ix_alertas_asignada")
+  @@index([estado, nivel, generada_en(sort: Desc)], map: "ix_alertas_bandeja")
+}
+
+model centros_salud {
+  id                         BigInt                       @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo                     String                       @unique(map: "uk_centros_codigo") @db.VarChar(30)
+  nombre                     String                       @db.VarChar(150)
+  tipo                       centros_salud_tipo           @default(CAP)
+  departamento               String                       @default("Quetzaltenango") @db.VarChar(100)
+  municipio                  String                       @default("Génova Costa Cuca") @db.VarChar(100)
+  direccion                  String?                      @db.VarChar(255)
+  telefono                   String?                      @db.VarChar(25)
+  activo                     Boolean                      @default(true)
+  creado_en                  DateTime                     @default(now())
+  actualizado_en             DateTime                     @default(now())
+  evaluaciones_nutricionales evaluaciones_nutricionales[]
+  usuarios                   usuarios[]
+
+  @@index([departamento, municipio], map: "ix_centros_ubicacion")
+}
+
+model comunidades {
+  id              BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  nombre          String   @db.VarChar(120)
+  municipio       String   @default("Génova Costa Cuca") @db.VarChar(100)
+  departamento    String   @default("Quetzaltenango") @db.VarChar(100)
+  zona_referencia String?  @db.VarChar(150)
+  activo          Boolean  @default(true)
+  creado_en       DateTime @default(now())
+  ninos           ninos[]
+
+  @@unique([departamento, municipio, nombre], map: "uk_comunidad_ubicacion")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model evaluaciones_nutricionales {
+  orientaciones_guardadas orientaciones_guardadas[]
+  id                                                           BigInt                                      @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico                                               String                                      @unique(map: "uk_evaluaciones_codigo_publico") @db.Char(26)
+  nino_id                                                      BigInt                                      @db.UnsignedBigInt
+  centro_salud_id                                              BigInt                                      @db.UnsignedBigInt
+  registrado_por                                               BigInt                                      @db.UnsignedBigInt
+  reemplaza_evaluacion_id                                      BigInt?                                     @unique(map: "uk_evaluacion_reemplazada") @db.UnsignedBigInt
+  evaluado_en                                                  DateTime
+  edad_dias                                                    Int                                         @db.UnsignedSmallInt
+  peso_kg                                                      Decimal                                     @db.Decimal(5, 2)
+  talla_cm                                                     Decimal                                     @db.Decimal(5, 2)
+  tipo_medicion                                                evaluaciones_nutricionales_tipo_medicion
+  edema                                                        evaluaciones_edema                         @default(DESCONOCIDO)
+  imc                                                          Decimal?                                    @db.Decimal(5, 2)
+  lugar_evaluacion                                             evaluaciones_nutricionales_lugar_evaluacion @default(CLINICA)
+  origen_registro                                              evaluaciones_nutricionales_origen_registro  @default(MANUAL_WEB)
+  observaciones                                                String?                                     @db.Text
+  estado                                                       evaluaciones_nutricionales_estado           @default(REGISTRADA)
+  anulada_por                                                  BigInt?                                     @db.UnsignedBigInt
+  anulada_en                                                   DateTime?
+  motivo_anulacion                                             String?                                     @db.VarChar(500)
+  creado_en                                                    DateTime                                    @default(now())
+  actualizado_en                                               DateTime                                    @default(now())
+  usuarios_evaluaciones_nutricionales_anulada_porTousuarios    usuarios?                                   @relation("evaluaciones_nutricionales_anulada_porTousuarios", fields: [anulada_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_evaluaciones_anulador")
+  centros_salud                                                centros_salud                               @relation(fields: [centro_salud_id], references: [id], onUpdate: Restrict, map: "fk_evaluaciones_centro")
+  ninos                                                        ninos                                       @relation(fields: [nino_id], references: [id], onUpdate: Restrict, map: "fk_evaluaciones_nino")
+  evaluaciones_nutricionales                                   evaluaciones_nutricionales?                 @relation("evaluaciones_nutricionalesToevaluaciones_nutricionales", fields: [reemplaza_evaluacion_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_evaluaciones_reemplazo")
+  other_evaluaciones_nutricionales                             evaluaciones_nutricionales?                 @relation("evaluaciones_nutricionalesToevaluaciones_nutricionales")
+  usuarios_evaluaciones_nutricionales_registrado_porTousuarios usuarios                                    @relation("evaluaciones_nutricionales_registrado_porTousuarios", fields: [registrado_por], references: [id], onUpdate: Restrict, map: "fk_evaluaciones_registrador")
+  resultados_indicador                                         resultados_indicador[]
+
+  @@index([anulada_por], map: "fk_evaluaciones_anulador")
+  @@index([centro_salud_id, evaluado_en(sort: Desc)], map: "ix_evaluaciones_centro_fecha")
+  @@index([estado, evaluado_en(sort: Desc)], map: "ix_evaluaciones_estado_fecha")
+  @@index([nino_id, evaluado_en(sort: Desc)], map: "ix_evaluaciones_historial")
+  @@index([registrado_por, evaluado_en(sort: Desc)], map: "ix_evaluaciones_usuario_fecha")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model historial_alerta {
+  id              BigInt                            @id @default(autoincrement()) @db.UnsignedBigInt
+  alerta_id       BigInt                            @db.UnsignedBigInt
+  estado_anterior historial_alerta_estado_anterior?
+  estado_nuevo    historial_alerta_estado_nuevo
+  cambiado_por    BigInt?                           @db.UnsignedBigInt
+  comentario      String?                           @db.VarChar(600)
+  cambiado_en     DateTime                          @default(now())
+  alertas         alertas                           @relation(fields: [alerta_id], references: [id], onUpdate: Restrict, map: "fk_historial_alerta")
+  usuarios        usuarios?                         @relation(fields: [cambiado_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_historial_alerta_usuario")
+
+  @@index([cambiado_por], map: "fk_historial_alerta_usuario")
+  @@index([alerta_id, cambiado_en], map: "ix_historial_alerta_fecha")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model modulos_menu {
+  id             Int             @id @default(autoincrement()) @db.UnsignedSmallInt
+  codigo         String          @unique(map: "uk_modulos_menu_codigo") @db.VarChar(50)
+  nombre         String          @db.VarChar(100)
+  descripcion    String?         @db.VarChar(255)
+  icono          String?         @db.VarChar(80)
+  ruta_base      String?         @db.VarChar(180)
+  orden          Int             @default(0) @db.UnsignedSmallInt
+  activo         Boolean         @default(true)
+  creado_en      DateTime        @default(now())
+  actualizado_en DateTime        @default(now())
+  opciones_menu  opciones_menu[]
+
+  @@index([activo, orden, nombre], map: "ix_modulos_menu_orden")
+}
+
+model nino_responsable {
+  nino_id             BigInt                      @db.UnsignedBigInt
+  responsable_id      BigInt                      @db.UnsignedBigInt
+  parentesco          nino_responsable_parentesco
+  es_principal        Boolean                     @default(false)
+  autorizado_contacto Boolean                     @default(true)
+  registrado_por      BigInt                      @db.UnsignedBigInt
+  creado_en           DateTime                    @default(now())
+  ninos               ninos                       @relation(fields: [nino_id], references: [id], onUpdate: Restrict, map: "fk_nino_responsable_nino")
+  responsables        responsables                @relation(fields: [responsable_id], references: [id], onUpdate: Restrict, map: "fk_nino_responsable_persona")
+  usuarios            usuarios                    @relation(fields: [registrado_por], references: [id], onUpdate: Restrict, map: "fk_nino_responsable_usuario")
+
+  @@id([nino_id, responsable_id])
+  @@index([responsable_id], map: "fk_nino_responsable_persona")
+  @@index([registrado_por], map: "fk_nino_responsable_usuario")
+  @@index([nino_id, es_principal], map: "ix_nino_responsable_principal")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model ninos {
+  id                         BigInt                       @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico             String                       @unique(map: "uk_ninos_codigo_publico") @db.Char(26)
+  codigo_expediente          String                       @unique(map: "uk_ninos_expediente") @db.VarChar(40)
+  comunidad_id               BigInt?                      @db.UnsignedBigInt
+  certificado_hash           Bytes                        @unique(map: "uk_ninos_certificado_hash") @db.Binary(32)
+  certificado_cifrado        Bytes                        @db.VarBinary(512)
+  certificado_ultimos4       String                       @db.Char(4)
+  primer_nombre              String                       @db.VarChar(80)
+  segundo_nombre             String?                      @db.VarChar(80)
+  primer_apellido            String                       @db.VarChar(80)
+  segundo_apellido           String?                      @db.VarChar(80)
+  fecha_nacimiento           DateTime                     @db.Date
+  sexo_biologico             ninos_sexo_biologico
+  direccion_referencia       String?                      @db.VarChar(255)
+  estado                     ninos_estado                 @default(ACTIVO)
+  registrado_por             BigInt                       @db.UnsignedBigInt
+  creado_en                  DateTime                     @default(now())
+  actualizado_en             DateTime                     @default(now())
+  archivado_en               DateTime?
+  version_registro           Int                          @default(1) @db.UnsignedInt
+  evaluaciones_nutricionales evaluaciones_nutricionales[]
+  nino_responsable           nino_responsable[]
+  comunidades                comunidades?                 @relation(fields: [comunidad_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_ninos_comunidad")
+  usuarios                   usuarios                     @relation(fields: [registrado_por], references: [id], onUpdate: Restrict, map: "fk_ninos_registrador")
+  reportes_generados         reportes_generados[]
+
+  @@index([registrado_por], map: "fk_ninos_registrador")
+  @@index([comunidad_id, estado], map: "ix_ninos_comunidad_estado")
+  @@index([fecha_nacimiento, sexo_biologico], map: "ix_ninos_fecha_sexo")
+  @@index([primer_apellido, segundo_apellido, primer_nombre, segundo_nombre], map: "ix_ninos_nombre")
+}
+
+model opcion_menu_permiso {
+  opcion_menu_id BigInt        @db.UnsignedBigInt
+  permiso_id     Int           @db.UnsignedSmallInt
+  asignado_en    DateTime      @default(now())
+  opciones_menu  opciones_menu @relation(fields: [opcion_menu_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_opcion_menu_permiso_opcion")
+  permisos       permisos      @relation(fields: [permiso_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_opcion_menu_permiso_permiso")
+
+  @@id([opcion_menu_id, permiso_id])
+  @@index([permiso_id], map: "fk_opcion_menu_permiso_permiso")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model opciones_menu {
+  id                  BigInt                @id @default(autoincrement()) @db.UnsignedBigInt
+  modulo_menu_id      Int                   @db.UnsignedSmallInt
+  menu_padre_id       BigInt?               @db.UnsignedBigInt
+  codigo              String                @unique(map: "uk_opciones_menu_codigo") @db.VarChar(70)
+  nombre              String                @db.VarChar(120)
+  tipo                opciones_menu_tipo    @default(ENLACE)
+  ruta                String?               @db.VarChar(220)
+  icono               String?               @db.VarChar(80)
+  orden               Int                   @default(0) @db.UnsignedSmallInt
+  visible             Boolean               @default(true)
+  activo              Boolean               @default(true)
+  abre_nueva_pestana  Boolean               @default(false)
+  creado_en           DateTime              @default(now())
+  actualizado_en      DateTime              @default(now())
+  opcion_menu_permiso opcion_menu_permiso[]
+  modulos_menu        modulos_menu          @relation(fields: [modulo_menu_id], references: [id], onUpdate: Restrict, map: "fk_opciones_menu_modulo")
+  opciones_menu       opciones_menu?        @relation("opciones_menuToopciones_menu", fields: [menu_padre_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_opciones_menu_padre")
+  other_opciones_menu opciones_menu[]       @relation("opciones_menuToopciones_menu")
+
+  @@index([modulo_menu_id, activo, visible, orden], map: "ix_opciones_menu_modulo")
+  @@index([menu_padre_id, activo, orden], map: "ix_opciones_menu_padre")
+}
+
+model parametros_lms_edad {
+  id                   BigInt                             @id @default(autoincrement()) @db.UnsignedBigInt
+  patron_id            Int                                @db.UnsignedSmallInt
+  indicador_id         Int                                @db.UnsignedSmallInt
+  sexo_biologico       parametros_lms_edad_sexo_biologico
+  edad_dias            Int                                @db.UnsignedSmallInt
+  valor_l              Decimal                            @db.Decimal(14, 8)
+  valor_m              Decimal                            @db.Decimal(14, 8)
+  valor_s              Decimal                            @db.Decimal(14, 8)
+  creado_en            DateTime                           @default(now())
+  tipos_indicador      tipos_indicador                    @relation(fields: [indicador_id], references: [id], onUpdate: Restrict, map: "fk_lms_edad_indicador")
+  patrones_crecimiento patrones_crecimiento               @relation(fields: [patron_id], references: [id], onUpdate: Restrict, map: "fk_lms_edad_patron")
+
+  @@unique([patron_id, indicador_id, sexo_biologico, edad_dias], map: "uk_lms_edad")
+  @@index([indicador_id], map: "fk_lms_edad_indicador")
+}
+
+model parametros_lms_talla {
+  id                   BigInt                              @id @default(autoincrement()) @db.UnsignedBigInt
+  patron_id            Int                                 @db.UnsignedSmallInt
+  indicador_id         Int                                 @db.UnsignedSmallInt
+  sexo_biologico       parametros_lms_talla_sexo_biologico
+  tipo_medicion        parametros_lms_talla_tipo_medicion
+  talla_cm             Decimal                             @db.Decimal(5, 1)
+  valor_l              Decimal                             @db.Decimal(14, 8)
+  valor_m              Decimal                             @db.Decimal(14, 8)
+  valor_s              Decimal                             @db.Decimal(14, 8)
+  creado_en            DateTime                            @default(now())
+  tipos_indicador      tipos_indicador                     @relation(fields: [indicador_id], references: [id], onUpdate: Restrict, map: "fk_lms_talla_indicador")
+  patrones_crecimiento patrones_crecimiento                @relation(fields: [patron_id], references: [id], onUpdate: Restrict, map: "fk_lms_talla_patron")
+
+  @@unique([patron_id, indicador_id, sexo_biologico, tipo_medicion, talla_cm], map: "uk_lms_talla")
+  @@index([indicador_id], map: "fk_lms_talla_indicador")
+}
+
+model patrones_crecimiento {
+  id                    Int                    @id @default(autoincrement()) @db.UnsignedSmallInt
+  codigo                String                 @unique(map: "uk_patrones_codigo") @db.VarChar(40)
+  nombre                String                 @db.VarChar(160)
+  organizacion_fuente   String                 @db.VarChar(120)
+  version               String                 @db.VarChar(40)
+  referencia_documental String?                @db.VarChar(500)
+  vigente_desde         DateTime?              @db.Date
+  vigente_hasta         DateTime?              @db.Date
+  activo                Boolean                @default(false)
+  creado_en             DateTime               @default(now())
+  parametros_lms_edad   parametros_lms_edad[]
+  parametros_lms_talla  parametros_lms_talla[]
+  reglas_clasificacion  reglas_clasificacion[]
+  resultados_indicador  resultados_indicador[]
+
+  @@unique([nombre, version], map: "uk_patrones_nombre_version")
+}
+
+model permisos {
+  id                  Int                   @id @default(autoincrement()) @db.UnsignedSmallInt
+  codigo              String                @unique(map: "uk_permisos_codigo") @db.VarChar(80)
+  modulo              String                @db.VarChar(50)
+  descripcion         String                @db.VarChar(255)
+  activo              Boolean               @default(true)
+  creado_en           DateTime              @default(now())
+  actualizado_en      DateTime              @default(now())
+  opcion_menu_permiso opcion_menu_permiso[]
+  rol_permiso         rol_permiso[]
+  usuario_permiso     usuario_permiso[]
+
+  @@index([modulo], map: "ix_permisos_modulo")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model registros_auditoria {
+  id                    BigInt                     @id @default(autoincrement()) @db.UnsignedBigInt
+  usuario_id            BigInt?                    @db.UnsignedBigInt
+  accion                registros_auditoria_accion
+  entidad               String                     @db.VarChar(80)
+  entidad_id            String?                    @db.VarChar(64)
+  datos_anteriores      String?                    @db.LongText
+  datos_nuevos          String?                    @db.LongText
+  direccion_ip          Bytes?                     @db.VarBinary(16)
+  agente_usuario        String?                    @db.VarChar(500)
+  correlacion_solicitud String?                    @db.Char(36)
+  ocurrido_en           DateTime                   @default(now())
+  usuarios              usuarios?                  @relation(fields: [usuario_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_auditoria_usuario")
+
+  @@index([entidad, entidad_id, ocurrido_en(sort: Desc)], map: "ix_auditoria_entidad")
+  @@index([ocurrido_en(sort: Desc)], map: "ix_auditoria_fecha")
+  @@index([usuario_id, ocurrido_en(sort: Desc)], map: "ix_auditoria_usuario")
+}
+
+model reglas_clasificacion {
+  id                   Int                                 @id @default(autoincrement()) @db.UnsignedSmallInt
+  patron_id            Int                                 @db.UnsignedSmallInt
+  indicador_id         Int                                 @db.UnsignedSmallInt
+  codigo               String                              @db.VarChar(50)
+  etiqueta             String                              @db.VarChar(140)
+  z_min                Decimal?                            @db.Decimal(6, 3)
+  z_max                Decimal?                            @db.Decimal(6, 3)
+  incluye_min          Boolean                             @default(true)
+  incluye_max          Boolean                             @default(false)
+  nivel_revision       reglas_clasificacion_nivel_revision
+  color_hex            String                              @db.Char(7)
+  genera_alerta        Boolean                             @default(false)
+  orden                Int                                 @db.UnsignedTinyInt
+  activa               Boolean                             @default(true)
+  tipos_indicador      tipos_indicador                     @relation(fields: [indicador_id], references: [id], onUpdate: Restrict, map: "fk_reglas_indicador")
+  patrones_crecimiento patrones_crecimiento                @relation(fields: [patron_id], references: [id], onUpdate: Restrict, map: "fk_reglas_patron")
+  resultados_indicador resultados_indicador[]
+
+  @@unique([patron_id, indicador_id, codigo], map: "uk_regla_codigo")
+  @@index([indicador_id], map: "fk_reglas_indicador")
+  @@index([patron_id, indicador_id, activa, orden], map: "ix_reglas_busqueda")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model reportes_generados {
+ orientacion_id BigInt? @db.UnsignedBigInt
+ solicitud_id String? @db.Char(36)
+ contenido_html String? @db.LongText
+ orientacion orientaciones_guardadas? @relation(fields:[orientacion_id], references:[id], onDelete:Restrict,onUpdate:Restrict,map:"fk_reporte_orientacion")
+ @@unique([generado_por,solicitud_id],map:"uk_reporte_solicitud")
+  id              BigInt                     @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico  String                     @unique(map: "uk_reportes_codigo_publico") @db.Char(26)
+  tipo_reporte    String                     @db.VarChar(60)
+  nino_id         BigInt?                    @db.UnsignedBigInt
+  filtros         String?                    @db.LongText
+  formato         reportes_generados_formato @default(PDF)
+  ruta_archivo    String?                    @db.VarChar(500)
+  hash_sha256     Bytes?                     @db.Binary(32)
+  total_registros Int                        @default(0) @db.UnsignedInt
+  generado_por    BigInt                     @db.UnsignedBigInt
+  generado_en     DateTime                   @default(now())
+  expira_en       DateTime?
+  ninos           ninos?                     @relation(fields: [nino_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_reportes_nino")
+  usuarios        usuarios                   @relation(fields: [generado_por], references: [id], onUpdate: Restrict, map: "fk_reportes_usuario")
+
+  @@index([nino_id, generado_en(sort: Desc)], map: "ix_reportes_nino_fecha")
+  @@index([generado_por, generado_en(sort: Desc)], map: "ix_reportes_usuario_fecha")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model respaldos_bd {
+  id             BigInt              @id @default(autoincrement()) @db.UnsignedBigInt
+  tipo           respaldos_bd_tipo   @default(COMPLETO)
+  destino        String              @db.VarChar(255)
+  estado         respaldos_bd_estado
+  tamano_bytes   BigInt?             @db.UnsignedBigInt
+  hash_sha256    Bytes?              @db.Binary(32)
+  iniciado_en    DateTime            @default(now())
+  finalizado_en  DateTime?
+  verificado_en  DateTime?
+  registrado_por BigInt?             @db.UnsignedBigInt
+  detalle_error  String?             @db.VarChar(1000)
+  usuarios       usuarios?           @relation(fields: [registrado_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_respaldos_usuario")
+
+  @@index([registrado_por], map: "fk_respaldos_usuario")
+  @@index([estado, iniciado_en(sort: Desc)], map: "ix_respaldos_estado_fecha")
+}
+
+model responsables {
+  dpi_hash Bytes? @unique(map: "uk_responsables_dpi") @db.Binary(32)
+  dpi_ultimos4 String? @db.Char(4)
+  id               BigInt             @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico   String             @unique(map: "uk_responsables_codigo_publico") @db.Char(26)
+  nombres          String             @db.VarChar(120)
+  apellidos        String             @db.VarChar(120)
+  telefono         String?            @db.VarChar(25)
+  correo           String?            @db.VarChar(160)
+  direccion        String?            @db.VarChar(255)
+  activo           Boolean            @default(true)
+  creado_en        DateTime           @default(now())
+  actualizado_en   DateTime           @default(now())
+  nino_responsable nino_responsable[]
+
+  @@index([apellidos, nombres], map: "ix_responsables_nombre")
+  @@index([telefono], map: "ix_responsables_telefono")
+}
+
+model resultados_indicador {
+  id                         BigInt                              @id @default(autoincrement()) @db.UnsignedBigInt
+  evaluacion_id              BigInt                              @db.UnsignedBigInt
+  patron_id                  Int                                 @db.UnsignedSmallInt
+  indicador_id               Int                                 @db.UnsignedSmallInt
+  regla_clasificacion_id     Int?                                @db.UnsignedSmallInt
+  valor_observado            Decimal                             @db.Decimal(12, 4)
+  puntaje_z                  Decimal?                            @db.Decimal(7, 4)
+  percentil                  Decimal?                            @db.Decimal(7, 4)
+  clasificacion_texto        String                              @db.VarChar(140)
+  nivel_revision             resultados_indicador_nivel_revision
+  requiere_revision          Boolean                             @default(false)
+  version_algoritmo          String                              @db.VarChar(40)
+  detalles_calculo           String?                             @db.LongText
+  calculado_en               DateTime                            @default(now())
+  alertas                    alertas?
+  evaluaciones_nutricionales evaluaciones_nutricionales          @relation(fields: [evaluacion_id], references: [id], onUpdate: Restrict, map: "fk_resultados_evaluacion")
+  tipos_indicador            tipos_indicador                     @relation(fields: [indicador_id], references: [id], onUpdate: Restrict, map: "fk_resultados_indicador")
+  patrones_crecimiento       patrones_crecimiento                @relation(fields: [patron_id], references: [id], onUpdate: Restrict, map: "fk_resultados_patron")
+  reglas_clasificacion       reglas_clasificacion?               @relation(fields: [regla_clasificacion_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_resultados_regla")
+
+  @@unique([evaluacion_id, indicador_id], map: "uk_resultado_evaluacion_indicador")
+  @@index([patron_id], map: "fk_resultados_patron")
+  @@index([regla_clasificacion_id], map: "fk_resultados_regla")
+  @@index([indicador_id, nivel_revision, calculado_en(sort: Desc)], map: "ix_resultados_clasificacion")
+}
+
+model rol_permiso {
+  rol_id      Int      @db.UnsignedSmallInt
+  permiso_id  Int      @db.UnsignedSmallInt
+  asignado_en DateTime @default(now())
+  permisos    permisos @relation(fields: [permiso_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_rol_permiso_permiso")
+  roles       roles    @relation(fields: [rol_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_rol_permiso_rol")
+
+  @@id([rol_id, permiso_id])
+  @@index([permiso_id], map: "fk_rol_permiso_permiso")
+}
+
+model roles {
+  id          Int           @id @default(autoincrement()) @db.UnsignedSmallInt
+  codigo      String        @unique(map: "uk_roles_codigo") @db.VarChar(40)
+  nombre      String        @unique(map: "uk_roles_nombre") @db.VarChar(80)
+  descripcion String?       @db.VarChar(255)
+  activo      Boolean       @default(true)
+  creado_en   DateTime      @default(now())
+  rol_permiso rol_permiso[]
+  usuario_rol usuario_rol[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model sesiones_usuario {
+  id                BigInt    @id @default(autoincrement()) @db.UnsignedBigInt
+  usuario_id        BigInt    @db.UnsignedBigInt
+  token_hash        Bytes     @unique(map: "uk_sesiones_token_hash") @db.Binary(32)
+  direccion_ip      Bytes?    @db.VarBinary(16)
+  agente_usuario    String?   @db.VarChar(500)
+  iniciada_en       DateTime  @default(now())
+  expira_en         DateTime
+  revocada_en       DateTime?
+  motivo_revocacion String?   @db.VarChar(120)
+  usuarios          usuarios  @relation(fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_sesiones_usuario")
+
+  @@index([usuario_id, expira_en, revocada_en], map: "ix_sesiones_usuario_vigencia")
+}
+
+model tipos_indicador {
+  id                   Int                                @id @default(autoincrement()) @db.UnsignedSmallInt
+  codigo               String                             @unique(map: "uk_indicadores_codigo") @db.VarChar(30)
+  nombre               String                             @unique(map: "uk_indicadores_nombre") @db.VarChar(120)
+  eje_referencia       tipos_indicador_eje_referencia
+  variable_resultado   tipos_indicador_variable_resultado
+  unidad_resultado     String                             @db.VarChar(20)
+  descripcion          String?                            @db.VarChar(255)
+  activo               Boolean                            @default(true)
+  parametros_lms_edad  parametros_lms_edad[]
+  parametros_lms_talla parametros_lms_talla[]
+  reglas_clasificacion reglas_clasificacion[]
+  resultados_indicador resultados_indicador[]
+}
+
+model usuario_permiso {
+  usuario_id                                      BigInt                 @db.UnsignedBigInt
+  permiso_id                                      Int                    @db.UnsignedSmallInt
+  efecto                                          usuario_permiso_efecto
+  asignado_por                                    BigInt                 @db.UnsignedBigInt
+  motivo                                          String?                @db.VarChar(255)
+  asignado_en                                     DateTime               @default(now())
+  expira_en                                       DateTime?
+  usuarios_usuario_permiso_asignado_porTousuarios usuarios               @relation("usuario_permiso_asignado_porTousuarios", fields: [asignado_por], references: [id], onUpdate: Restrict, map: "fk_usuario_permiso_asignador")
+  permisos                                        permisos               @relation(fields: [permiso_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_usuario_permiso_permiso")
+  usuarios_usuario_permiso_usuario_idTousuarios   usuarios               @relation("usuario_permiso_usuario_idTousuarios", fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_usuario_permiso_usuario")
+
+  @@id([usuario_id, permiso_id])
+  @@index([asignado_por], map: "fk_usuario_permiso_asignador")
+  @@index([permiso_id], map: "fk_usuario_permiso_permiso")
+  @@index([efecto, expira_en], map: "ix_usuario_permiso_vigencia")
+}
+
+model usuario_rol {
+  usuario_id                                  BigInt    @db.UnsignedBigInt
+  rol_id                                      Int       @db.UnsignedSmallInt
+  asignado_por                                BigInt?   @db.UnsignedBigInt
+  asignado_en                                 DateTime  @default(now())
+  usuarios_usuario_rol_asignado_porTousuarios usuarios? @relation("usuario_rol_asignado_porTousuarios", fields: [asignado_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_usuario_rol_asignador")
+  roles                                       roles     @relation(fields: [rol_id], references: [id], onUpdate: Restrict, map: "fk_usuario_rol_rol")
+  usuarios_usuario_rol_usuario_idTousuarios   usuarios  @relation("usuario_rol_usuario_idTousuarios", fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: Restrict, map: "fk_usuario_rol_usuario")
+
+  @@id([usuario_id, rol_id])
+  @@index([asignado_por], map: "fk_usuario_rol_asignador")
+  @@index([rol_id], map: "fk_usuario_rol_rol")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model usuarios {
+ valoraciones_medicas valoraciones_medicas[]
+  orientaciones_guardadas orientaciones_guardadas[]
+  id                                                                             BigInt                       @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico                                                                 String                       @unique(map: "uk_usuarios_codigo_publico") @db.Char(26)
+  centro_salud_id                                                                BigInt?                      @db.UnsignedBigInt
+  codigo_acceso                                                                  String                       @unique(map: "uk_usuarios_codigo_acceso") @db.VarChar(40)
+  nombres                                                                        String                       @db.VarChar(120)
+  apellidos                                                                      String                       @db.VarChar(120)
+  numero_colegiado                                                               String?                      @db.VarChar(40)
+  correo                                                                         String?                      @unique(map: "uk_usuarios_correo") @db.VarChar(160)
+  contrasena_hash                                                                String                       @db.VarChar(255)
+  estado                                                                         usuarios_estado              @default(ACTIVO)
+  intentos_fallidos                                                              Int                          @default(0) @db.UnsignedTinyInt
+  bloqueado_hasta                                                                DateTime?
+  ultimo_acceso_en                                                               DateTime?
+  creado_por                                                                     BigInt?                      @db.UnsignedBigInt
+  creado_en                                                                      DateTime                     @default(now())
+  actualizado_en                                                                 DateTime                     @default(now())
+  desactivado_en                                                                 DateTime?
+  alertas_alertas_asignada_aTousuarios                                           alertas[]                    @relation("alertas_asignada_aTousuarios")
+  alertas_alertas_revisada_porTousuarios                                         alertas[]                    @relation("alertas_revisada_porTousuarios")
+  evaluaciones_nutricionales_evaluaciones_nutricionales_anulada_porTousuarios    evaluaciones_nutricionales[] @relation("evaluaciones_nutricionales_anulada_porTousuarios")
+  evaluaciones_nutricionales_evaluaciones_nutricionales_registrado_porTousuarios evaluaciones_nutricionales[] @relation("evaluaciones_nutricionales_registrado_porTousuarios")
+  historial_alerta                                                               historial_alerta[]
+  nino_responsable                                                               nino_responsable[]
+  ninos                                                                          ninos[]
+  registros_auditoria                                                            registros_auditoria[]
+  reportes_generados                                                             reportes_generados[]
+  respaldos_bd                                                                   respaldos_bd[]
+  sesiones_usuario                                                               sesiones_usuario[]
+  usuario_permiso_usuario_permiso_asignado_porTousuarios                         usuario_permiso[]            @relation("usuario_permiso_asignado_porTousuarios")
+  usuario_permiso_usuario_permiso_usuario_idTousuarios                           usuario_permiso[]            @relation("usuario_permiso_usuario_idTousuarios")
+  usuario_rol_usuario_rol_asignado_porTousuarios                                 usuario_rol[]                @relation("usuario_rol_asignado_porTousuarios")
+  usuario_rol_usuario_rol_usuario_idTousuarios                                   usuario_rol[]                @relation("usuario_rol_usuario_idTousuarios")
+  centros_salud                                                                  centros_salud?               @relation(fields: [centro_salud_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_usuarios_centro")
+  usuarios                                                                       usuarios?                    @relation("usuariosTousuarios", fields: [creado_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_usuarios_creador")
+  other_usuarios                                                                 usuarios[]                   @relation("usuariosTousuarios")
+
+  @@index([creado_por], map: "fk_usuarios_creador")
+  @@index([centro_salud_id, estado], map: "ix_usuarios_centro_estado")
+  @@index([apellidos, nombres], map: "ix_usuarios_nombre")
+}
+
+enum respaldos_bd_tipo {
+  COMPLETO
+  INCREMENTAL
+}
+
+enum usuario_permiso_efecto {
+  PERMITIR
+  DENEGAR
+}
+
+enum nino_responsable_parentesco {
+  MADRE
+  PADRE
+  TUTOR
+  ABUELO_A
+  OTRO
+}
+
+enum historial_alerta_estado_anterior {
+  PENDIENTE
+  EN_REVISION
+  ATENDIDA
+  DESCARTADA
+}
+
+enum registros_auditoria_accion {
+  INSERTAR
+  ACTUALIZAR
+  ANULAR
+  INICIAR_SESION
+  CERRAR_SESION
+  CONSULTAR
+  EXPORTAR
+  RESPALDAR
+}
+
+enum centros_salud_tipo {
+  CAP
+  PUESTO_SALUD
+  CENTRO_SALUD
+  OTRO
+}
+
+enum tipos_indicador_eje_referencia {
+  EDAD_DIAS
+  TALLA_CM
+}
+
+enum parametros_lms_edad_sexo_biologico {
+  M
+  F
+}
+
+enum parametros_lms_talla_sexo_biologico {
+  M
+  F
+}
+
+enum alertas_nivel {
+  OBSERVAR
+  PRIORITARIO
+  URGENTE
+}
+
+enum historial_alerta_estado_nuevo {
+  PENDIENTE
+  EN_REVISION
+  ATENDIDA
+  DESCARTADA
+}
+
+enum respaldos_bd_estado {
+  INICIADO
+  COMPLETADO
+  FALLIDO
+  VERIFICADO
+}
+
+enum tipos_indicador_variable_resultado {
+  PESO_KG
+  TALLA_CM
+  IMC
+}
+
+enum parametros_lms_talla_tipo_medicion {
+  LONGITUD_ACOSTADO
+  TALLA_DE_PIE
+}
+
+enum opciones_menu_tipo {
+  ENLACE
+  GRUPO
+  SEPARADOR
+}
+
+enum reportes_generados_formato {
+ HTML
+  PDF
+  CSV
+  XLSX
+}
+
+enum alertas_estado {
+  PENDIENTE
+  EN_REVISION
+  ATENDIDA
+  DESCARTADA
+}
+
+enum usuarios_estado {
+  ACTIVO
+  BLOQUEADO
+  INACTIVO
+}
+
+enum reglas_clasificacion_nivel_revision {
+  NINGUNO
+  OBSERVAR
+  PRIORITARIO
+  URGENTE
+}
+
+enum resultados_indicador_nivel_revision {
+  NINGUNO
+  OBSERVAR
+  PRIORITARIO
+  URGENTE
+}
+
+enum evaluaciones_nutricionales_tipo_medicion {
+  LONGITUD_ACOSTADO
+  TALLA_DE_PIE
+}
+
+enum ninos_sexo_biologico {
+  M
+  F
+}
+
+enum evaluaciones_nutricionales_lugar_evaluacion {
+  CLINICA
+  VISITA_DOMICILIAR
+  JORNADA_COMUNITARIA
+  OTRO
+}
+
+enum evaluaciones_nutricionales_origen_registro {
+  MANUAL_WEB
+  IMPORTACION_AUTORIZADA
+}
+
+enum ninos_estado {
+  ACTIVO
+  INACTIVO
+  ARCHIVADO
+}
+
+enum evaluaciones_nutricionales_estado {
+  REGISTRADA
+  VALIDADA
+  ANULADA
+}
+
+enum evaluaciones_edema {
+  SI
+  NO
+  DESCONOCIDO
+}
+
+model orientaciones_guardadas {
+ reportes_generados reportes_generados[]
+ alertas alertas[]
+ valoraciones_medicas valoraciones_medicas[]
+  id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  codigo_publico String @unique(map: "uk_orientacion_codigo") @db.Char(26)
+  evaluacion_id BigInt @db.UnsignedBigInt
+  guardado_por BigInt @db.UnsignedBigInt
+  guardado_en DateTime @default(now()) @db.DateTime(3)
+  contenido_sha256 String @db.Char(64)
+  contenido String @db.LongText
+  evaluacion evaluaciones_nutricionales @relation(fields: [evaluacion_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_orientacion_evaluacion")
+  autor usuarios @relation(fields: [guardado_por], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_orientacion_autor")
+  @@unique([evaluacion_id, contenido_sha256], map: "uk_orientacion_contenido")
+  @@index([guardado_por], map: "fk_orientacion_autor")
+}
+
+model valoraciones_medicas {
+ id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+ codigo_publico String @unique @db.Char(26)
+ orientacion_id BigInt @db.UnsignedBigInt
+ medico_id BigInt @db.UnsignedBigInt
+ solicitud_id String @db.Char(36)
+ decision String @db.VarChar(30)
+ valoracion String @db.Text
+ acciones String @db.Text
+ registrado_en DateTime @default(now()) @db.DateTime(3)
+ orientacion orientaciones_guardadas @relation(fields: [orientacion_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_valoracion_orientacion")
+ medico usuarios @relation(fields: [medico_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_valoracion_medico")
+ @@unique([orientacion_id,medico_id,solicitud_id],map: "uk_valoracion_solicitud")
+ @@index([medico_id],map: "fk_valoracion_medico")
+}

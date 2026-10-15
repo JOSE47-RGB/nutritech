@@ -1,0 +1,30 @@
+{
+  "version": "OMS-CRECIMIENTO-BORRADOR-1",
+  "archivo": "who-growth-monitoring.pdf",
+  "sha256": "7055ebb987a01492095aca906be9cf2cd233529589515b4f362e009263930916",
+  "url": "https://www.emro.who.int/images/stories/nutrition/Child-growth-monitoring-a-technical-guide-for-healtcare-professionals.pdf#page=26",
+  "pagina_pdf": 26,
+  "pagina_impresa": 24,
+  "tabla": "GROWTH PROBLEMS (0–5 YEARS)",
+  "fuentes": [
+    {
+      "titulo": "OMS: indicadores de crecimiento y límites exactos",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK148966/"
+    },
+    {
+      "titulo": "OMS: tabla 4 y notas por indicador",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK148966/table/session5.t1/?report=objectonly"
+    },
+    {
+      "titulo": "OMS EMRO: tabla de 0–5 años, página impresa 24",
+      "url": "https://www.emro.who.int/images/stories/nutrition/Child-growth-monitoring-a-technical-guide-for-healtcare-professionals.pdf#page=26"
+    }
+  ],
+  "revision_tecnica": {
+    "reglas": 20,
+    "indicadores": 4,
+    "huecos": 0,
+    "solapamientos": 0
+  },
+  "revision_clinica": "PENDIENTE"
+}

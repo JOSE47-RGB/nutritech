@@ -1,0 +1,17 @@
+{
+  "consultado_en": "2026-09-17T03:20:10.763911+00:00",
+  "archivos": [
+    {
+      "archivo": "mspas-vigilancia-da.pdf",
+      "url": "https://epidemiologia.mspas.gob.gt/phocadownload/userupload/protocolo-de-vigilancia/vigente/9.pdf",
+      "sha256": "9d82296388ae0ba297ec8200bc04ff1af46531adb434425b783c9a1d05000baa",
+      "catalogo": "https://epidemiologia.mspas.gob.gt/informacion/vigilancia-epidemiologica/protocolo-de-vigilancia/25-vigente",
+      "edicion": "Guatemala, octubre 2018",
+      "paginas_revisadas": [
+        8,
+        9
+      ]
+    }
+  ],
+  "alcance": "Vigilancia epidemiológica; no sustituye el protocolo clínico comunitario más reciente"
+}

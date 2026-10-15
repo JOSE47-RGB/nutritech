@@ -1,0 +1,10 @@
+{
+  "name": "nutritech",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sistema web para el seguimiento nutricional infantil",
+  "scripts": {
+    "verify": "node scripts/verify.cjs",
+    "verify:db": "node scripts/verify.cjs --database"
+  }
+}

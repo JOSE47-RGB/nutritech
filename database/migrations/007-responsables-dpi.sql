@@ -1,0 +1,1 @@
+ALTER TABLE responsables ADD COLUMN IF NOT EXISTS dpi_hash BINARY(32) NULL, ADD COLUMN IF NOT EXISTS dpi_ultimos4 CHAR(4) NULL, ADD UNIQUE INDEX IF NOT EXISTS uk_responsables_dpi (dpi_hash);

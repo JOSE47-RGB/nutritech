@@ -1,0 +1,5 @@
+services:
+  backend:
+    image: localhost/nutritech-backend:check
+  web:
+    image: localhost/nutritech-web:check

@@ -1,0 +1,348 @@
+{
+  "version": "OMS-CRECIMIENTO-BORRADOR-1",
+  "poblacion": "Menores de 5 años; sujetos a la cobertura del motor OMS-2006",
+  "estado": "BORRADOR",
+  "activa": false,
+  "revision_clinica": "PENDIENTE",
+  "revision_tecnica": {
+    "reglas": 20,
+    "indicadores": 4,
+    "huecos": 0,
+    "solapamientos": 0
+  },
+  "nivel_revision": null,
+  "genera_alerta": false,
+  "fuentes": [
+    {
+      "titulo": "OMS: indicadores de crecimiento y límites exactos",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK148966/"
+    },
+    {
+      "titulo": "OMS: tabla 4 y notas por indicador",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK148966/table/session5.t1/?report=objectonly"
+    },
+    {
+      "titulo": "OMS EMRO: tabla de 0–5 años, página impresa 24",
+      "url": "https://www.emro.who.int/images/stories/nutrition/Child-growth-monitoring-a-technical-guide-for-healtcare-professionals.pdf#page=26"
+    }
+  ],
+  "pendientes": [
+    "Revisión de las etiquetas y del protocolo aplicable por el responsable clínico del proyecto.",
+    "Definir prioridades de atención y condiciones de alertas; ninguna se infiere de los colores.",
+    "Usar el puntaje sin redondear del motor al implementar la persistencia de clasificaciones.",
+    "Definir evaluación del edema bilateral, casos fuera de cobertura y datos con banderas de calidad."
+  ],
+  "protocolo": {
+    "version": "REVISION-TECNICA-1",
+    "protocolo_local": "OMS + MSPAS Guatemala (alcances separados)",
+    "consolidacion": {
+      "version": "OMS-MSPAS-CONSOLIDACION-1",
+      "estado": "CONSOLIDACION_DOCUMENTAL",
+      "rol_sistema": "Apoyo al médico mediante recomendaciones, alertas y reportes trazables.",
+      "decision_final": "MEDICO",
+      "fuentes": [
+        {
+          "id": "OMS-2006",
+          "titulo": "OMS: estándares de crecimiento infantil",
+          "url": "https://www.who.int/tools/child-growth-standards",
+          "alcance": "Referencias de cálculo; el motor existente conserva su metodología."
+        },
+        {
+          "id": "OMS-2023",
+          "titulo": "OMS 2023: emaciación y edema nutricional",
+          "url": "https://www.who.int/publications/i/item/9789240082830",
+          "alcance": "Apoyo clínico; separar menores de 6 meses y población de 6–59 meses."
+        },
+        {
+          "id": "MSPAS-2018",
+          "titulo": "MSPAS 2018: vigilancia epidemiológica de desnutrición aguda",
+          "url": "https://epidemiologia.mspas.gob.gt/phocadownload/userupload/protocolo-de-vigilancia/vigente/9.pdf",
+          "alcance": "Definiciones y notificación; páginas 8–9. Listado en el catálogo Vigente, no equivale a verificar el protocolo clínico más reciente."
+        }
+      ],
+      "decisiones": [
+        {
+          "tema": "Antropometría",
+          "acuerdo": "Mantener el cálculo OMS y vincular cada recomendación con indicador, puntaje completo y fuente. Para desnutrición aguda antropométrica, comparar P_T con el criterio local.",
+          "estado": "BASE_DOCUMENTADA"
+        },
+        {
+          "tema": "Límites",
+          "acuerdo": "Conservar −3 ≤ z < −2 y z < −3 en P_T según OMS. La redacción resumida del cuadro MSPAS no se convierte en operadores diferentes sin evidencia.",
+          "estado": "BASE_DOCUMENTADA"
+        },
+        {
+          "tema": "Edema",
+          "acuerdo": "No convertir un puntaje ausente en ausencia de riesgo. Separar el hallazgo registrado de su interpretación clínica por el médico.",
+          "estado": "REQUIERE_DATOS_CLINICOS"
+        },
+        {
+          "tema": "Menores de seis meses",
+          "acuerdo": "Separar la evaluación clínica OMS de las exclusiones de notificación MSPAS. No omitir recomendaciones de revisión por estar excluido de un registro.",
+          "estado": "ALCANCES_DISTINTOS"
+        },
+        {
+          "tema": "Método y edad",
+          "acuerdo": "Conservar el motor validado. Revisar la diferencia entre la descripción local de medición y la metodología computacional antes de cambiar captura o cálculo.",
+          "estado": "DIFERENCIA_DOCUMENTADA"
+        },
+        {
+          "tema": "Alertas",
+          "acuerdo": "Proponer alertas de hallazgo, calidad y datos faltantes con motivo y fuente. La decisión médica y su registro deben mantenerse separados de la sugerencia automática.",
+          "estado": "DISENO_PENDIENTE"
+        },
+        {
+          "tema": "Reporte",
+          "acuerdo": "Mostrar medidas, puntajes, fuentes, versión y recomendaciones; incluir una sección diferenciada para valoración médica. No presentar el reporte como notificación oficial enviada.",
+          "estado": "DISENO_PENDIENTE"
+        }
+      ],
+      "limitaciones": [
+        "No se localizó una copia oficial verificable del protocolo clínico comunitario MSPAS más reciente. El documento de vigilancia no lo sustituye.",
+        "Faltan campos estructurados para perímetro braquial, grado de edema, signos de peligro, apetito y peso al nacer; no inferirlos de observaciones libres.",
+        "Esta consolidación no activa reglas ni guarda clasificaciones. La futura implementación debe distinguir datos desconocidos de respuestas negativas."
+      ]
+    },
+    "responsable_clinico": null,
+    "revision_clinica": "PENDIENTE",
+    "permite_persistir": false,
+    "casos": [
+      {
+        "codigo": "EDEMA",
+        "caso": "Edema presente",
+        "comportamiento": "P_E, P_T e IMC_E no disponibles. T_E puede calcularse por separado; no resume el estado nutricional.",
+        "pendiente": "Definir evaluación clínica y derivación según el protocolo aplicable."
+      },
+      {
+        "codigo": "EDEMA_DESCONOCIDO",
+        "caso": "Edema desconocido",
+        "comportamiento": "No se supone ausencia de edema. Los indicadores dependientes del peso quedan no disponibles.",
+        "pendiente": "Confirmar y registrar la evaluación del edema."
+      },
+      {
+        "codigo": "EDAD_FUERA_DE_COBERTURA",
+        "caso": "Edad fuera de cobertura",
+        "comportamiento": "No se calculan indicadores fuera de la cobertura del motor. No se extrapolan referencias.",
+        "pendiente": "Definir otro patrón para edades no cubiertas."
+      },
+      {
+        "codigo": "TALLA_FUERA_DE_COBERTURA",
+        "caso": "Talla fuera de cobertura para P_T",
+        "comportamiento": "P_T queda no disponible; los demás indicadores se evalúan independientemente.",
+        "pendiente": "Revisar medición y método sin reemplazar P_T por otro indicador automáticamente."
+      },
+      {
+        "codigo": "REFERENCIA_AUSENTE",
+        "caso": "Referencia ausente o alterada",
+        "comportamiento": "El motor devuelve un motivo si falta una fila; la API bloquea el cálculo si el conjunto no supera la verificación.",
+        "pendiente": "Restaurar y verificar las referencias antes de reintentar."
+      },
+      {
+        "codigo": "MEDIDA_INVALIDA",
+        "caso": "Medida inválida",
+        "comportamiento": "Las entradas no finitas se rechazan y las medidas no positivas no generan un puntaje utilizable.",
+        "pendiente": "Corregir el dato desde su medición original."
+      },
+      {
+        "codigo": "CALIDAD",
+        "caso": "Bandera de calidad",
+        "comportamiento": "El puntaje puede mostrarse para revisión; el borrador no asigna una regla con calidad marcada o desconocida.",
+        "pendiente": "Definir quién confirma o corrige la medición."
+      },
+      {
+        "codigo": "METODO",
+        "caso": "Método de medición marcado",
+        "comportamiento": "La medición de pie por debajo del umbral de 9 meses del motor requiere revisión. El borrador no asigna regla cuando recibe esa marca.",
+        "pendiente": "Revisar el método registrado; conservar la medida original y cualquier ajuste."
+      },
+      {
+        "codigo": "INTERPRETACION",
+        "caso": "Indicadores con resultados distintos",
+        "comportamiento": "Se mantienen separados. P_E no determina obesidad y T_E no resume el estado nutricional completo.",
+        "pendiente": "Definir interpretación conjunta, menores de 6 meses y otros criterios clínicos antes de generar prioridades."
+      }
+    ]
+  },
+  "reglas": [
+    {
+      "indicador": "P_E",
+      "codigo": "BAJO_PESO_SEVERO",
+      "etiqueta": "Bajo peso severo para la edad",
+      "z_min": null,
+      "z_max": -3,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "P_E",
+      "codigo": "BAJO_PESO",
+      "etiqueta": "Bajo peso para la edad",
+      "z_min": -3,
+      "z_max": -2,
+      "incluye_min": true,
+      "incluye_max": false
+    },
+    {
+      "indicador": "P_E",
+      "codigo": "SIN_BAJO_PESO",
+      "etiqueta": "Sin bajo peso según P_E",
+      "z_min": -2,
+      "z_max": 1,
+      "incluye_min": true,
+      "incluye_max": true
+    },
+    {
+      "indicador": "P_E",
+      "codigo": "CONSULTAR_PROPORCION",
+      "etiqueta": "Interpretar con P_T o IMC_E",
+      "z_min": 1,
+      "z_max": null,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "T_E",
+      "codigo": "TALLA_BAJA_SEVERA",
+      "etiqueta": "Talla baja severa para la edad",
+      "z_min": null,
+      "z_max": -3,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "T_E",
+      "codigo": "TALLA_BAJA",
+      "etiqueta": "Talla baja para la edad",
+      "z_min": -3,
+      "z_max": -2,
+      "incluye_min": true,
+      "incluye_max": false
+    },
+    {
+      "indicador": "T_E",
+      "codigo": "SIN_TALLA_BAJA",
+      "etiqueta": "Sin talla baja según T_E",
+      "z_min": -2,
+      "z_max": 3,
+      "incluye_min": true,
+      "incluye_max": true
+    },
+    {
+      "indicador": "T_E",
+      "codigo": "TALLA_MUY_ALTA",
+      "etiqueta": "Talla muy alta: interpretar el contexto",
+      "z_min": 3,
+      "z_max": null,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "P_T",
+      "codigo": "EMACIACION_SEVERA",
+      "etiqueta": "Emaciación severa",
+      "z_min": null,
+      "z_max": -3,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "P_T",
+      "codigo": "EMACIACION",
+      "etiqueta": "Emaciación",
+      "z_min": -3,
+      "z_max": -2,
+      "incluye_min": true,
+      "incluye_max": false
+    },
+    {
+      "indicador": "P_T",
+      "codigo": "INTERVALO_CENTRAL",
+      "etiqueta": "Dentro del intervalo central de este indicador",
+      "z_min": -2,
+      "z_max": 1,
+      "incluye_min": true,
+      "incluye_max": true
+    },
+    {
+      "indicador": "P_T",
+      "codigo": "POSIBLE_RIESGO_SOBREPESO",
+      "etiqueta": "Posible riesgo de sobrepeso",
+      "z_min": 1,
+      "z_max": 2,
+      "incluye_min": false,
+      "incluye_max": true
+    },
+    {
+      "indicador": "P_T",
+      "codigo": "SOBREPESO",
+      "etiqueta": "Sobrepeso",
+      "z_min": 2,
+      "z_max": 3,
+      "incluye_min": false,
+      "incluye_max": true
+    },
+    {
+      "indicador": "P_T",
+      "codigo": "OBESIDAD",
+      "etiqueta": "Obesidad",
+      "z_min": 3,
+      "z_max": null,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "IMC_E",
+      "codigo": "EMACIACION_SEVERA",
+      "etiqueta": "Emaciación severa",
+      "z_min": null,
+      "z_max": -3,
+      "incluye_min": false,
+      "incluye_max": false
+    },
+    {
+      "indicador": "IMC_E",
+      "codigo": "EMACIACION",
+      "etiqueta": "Emaciación",
+      "z_min": -3,
+      "z_max": -2,
+      "incluye_min": true,
+      "incluye_max": false
+    },
+    {
+      "indicador": "IMC_E",
+      "codigo": "INTERVALO_CENTRAL",
+      "etiqueta": "Dentro del intervalo central de este indicador",
+      "z_min": -2,
+      "z_max": 1,
+      "incluye_min": true,
+      "incluye_max": true
+    },
+    {
+      "indicador": "IMC_E",
+      "codigo": "POSIBLE_RIESGO_SOBREPESO",
+      "etiqueta": "Posible riesgo de sobrepeso",
+      "z_min": 1,
+      "z_max": 2,
+      "incluye_min": false,
+      "incluye_max": true
+    },
+    {
+      "indicador": "IMC_E",
+      "codigo": "SOBREPESO",
+      "etiqueta": "Sobrepeso",
+      "z_min": 2,
+      "z_max": 3,
+      "incluye_min": false,
+      "incluye_max": true
+    },
+    {
+      "indicador": "IMC_E",
+      "codigo": "OBESIDAD",
+      "etiqueta": "Obesidad",
+      "z_min": 3,
+      "z_max": null,
+      "incluye_min": false,
+      "incluye_max": false
+    }
+  ]
+}

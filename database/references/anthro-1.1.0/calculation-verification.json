@@ -1,0 +1,11 @@
+{
+  "verificado_en": "2026-09-10T01:44:05.163Z",
+  "commit": "80c8db44575425463423ed07bddfd79a3a3301b9",
+  "runtime_referencia": "R version 4.5.1 (2025-06-13)",
+  "referencias_comparadas": 13366,
+  "casos": 500,
+  "indicadores_por_caso": 4,
+  "discrepancias": [],
+  "patron_activo": false,
+  "persistencia_resultados": false
+}

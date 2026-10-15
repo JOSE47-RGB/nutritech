@@ -1,0 +1,856 @@
+[
+  {
+    "sexo": "M",
+    "meses": 0,
+    "peso_kg": 3.3464,
+    "talla_cm": 49.8842,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 1,
+    "peso_kg": 4.4709,
+    "talla_cm": 54.7244,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 2,
+    "peso_kg": 5.5675,
+    "talla_cm": 58.4249,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 3,
+    "peso_kg": 6.3762,
+    "talla_cm": 61.4292,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 4,
+    "peso_kg": 7.0023,
+    "talla_cm": 63.886,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 5,
+    "peso_kg": 7.5105,
+    "talla_cm": 65.9026,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 6,
+    "peso_kg": 7.934,
+    "talla_cm": 67.6236,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 7,
+    "peso_kg": 8.297,
+    "talla_cm": 69.1645,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 8,
+    "peso_kg": 8.6151,
+    "talla_cm": 70.5994,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 9,
+    "peso_kg": 8.9014,
+    "talla_cm": 71.9687,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 10,
+    "peso_kg": 9.1649,
+    "talla_cm": 73.2812,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 11,
+    "peso_kg": 9.4122,
+    "talla_cm": 74.5388,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 12,
+    "peso_kg": 9.6479,
+    "talla_cm": 75.7488,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 13,
+    "peso_kg": 9.8749,
+    "talla_cm": 76.9186,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 14,
+    "peso_kg": 10.0953,
+    "talla_cm": 78.0497,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 15,
+    "peso_kg": 10.3108,
+    "talla_cm": 79.1458,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 16,
+    "peso_kg": 10.5228,
+    "talla_cm": 80.2113,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 17,
+    "peso_kg": 10.7319,
+    "talla_cm": 81.2487,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 18,
+    "peso_kg": 10.9385,
+    "talla_cm": 82.2587,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 19,
+    "peso_kg": 11.143,
+    "talla_cm": 83.2418,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 20,
+    "peso_kg": 11.3462,
+    "talla_cm": 84.1996,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 21,
+    "peso_kg": 11.5486,
+    "talla_cm": 85.1348,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 22,
+    "peso_kg": 11.7504,
+    "talla_cm": 86.0477,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 23,
+    "peso_kg": 11.9514,
+    "talla_cm": 86.941,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "M",
+    "meses": 24,
+    "peso_kg": 12.1515,
+    "talla_cm": 87.1161,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 25,
+    "peso_kg": 12.3502,
+    "talla_cm": 87.972,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 26,
+    "peso_kg": 12.5466,
+    "talla_cm": 88.8065,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 27,
+    "peso_kg": 12.7401,
+    "talla_cm": 89.6197,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 28,
+    "peso_kg": 12.9303,
+    "talla_cm": 90.412,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 29,
+    "peso_kg": 13.1169,
+    "talla_cm": 91.1828,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 30,
+    "peso_kg": 13.3,
+    "talla_cm": 91.9327,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 31,
+    "peso_kg": 13.4798,
+    "talla_cm": 92.6631,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 32,
+    "peso_kg": 13.6567,
+    "talla_cm": 93.3753,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 33,
+    "peso_kg": 13.8309,
+    "talla_cm": 94.0711,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 34,
+    "peso_kg": 14.0031,
+    "talla_cm": 94.7532,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 35,
+    "peso_kg": 14.1736,
+    "talla_cm": 95.4236,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 36,
+    "peso_kg": 14.3429,
+    "talla_cm": 96.0835,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 37,
+    "peso_kg": 14.5113,
+    "talla_cm": 96.7337,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 38,
+    "peso_kg": 14.6791,
+    "talla_cm": 97.3749,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 39,
+    "peso_kg": 14.8466,
+    "talla_cm": 98.0073,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 40,
+    "peso_kg": 15.014,
+    "talla_cm": 98.631,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 41,
+    "peso_kg": 15.1813,
+    "talla_cm": 99.2459,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 42,
+    "peso_kg": 15.3486,
+    "talla_cm": 99.8515,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 43,
+    "peso_kg": 15.5158,
+    "talla_cm": 100.4485,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 44,
+    "peso_kg": 15.6828,
+    "talla_cm": 101.0374,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 45,
+    "peso_kg": 15.8497,
+    "talla_cm": 101.6186,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 46,
+    "peso_kg": 16.0163,
+    "talla_cm": 102.1933,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 47,
+    "peso_kg": 16.1827,
+    "talla_cm": 102.7625,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 48,
+    "peso_kg": 16.3489,
+    "talla_cm": 103.3273,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 49,
+    "peso_kg": 16.515,
+    "talla_cm": 103.8886,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 50,
+    "peso_kg": 16.6811,
+    "talla_cm": 104.4473,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 51,
+    "peso_kg": 16.8471,
+    "talla_cm": 105.0041,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 52,
+    "peso_kg": 17.0132,
+    "talla_cm": 105.5596,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 53,
+    "peso_kg": 17.1792,
+    "talla_cm": 106.1138,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 54,
+    "peso_kg": 17.3452,
+    "talla_cm": 106.6668,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 55,
+    "peso_kg": 17.5111,
+    "talla_cm": 107.2188,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 56,
+    "peso_kg": 17.6768,
+    "talla_cm": 107.7697,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 57,
+    "peso_kg": 17.8422,
+    "talla_cm": 108.3198,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 58,
+    "peso_kg": 18.0073,
+    "talla_cm": 108.8689,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 59,
+    "peso_kg": 18.1722,
+    "talla_cm": 109.417,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "M",
+    "meses": 60,
+    "peso_kg": 18.3366,
+    "talla_cm": 109.9638,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 0,
+    "peso_kg": 3.2322,
+    "talla_cm": 49.1477,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 1,
+    "peso_kg": 4.1873,
+    "talla_cm": 53.6872,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 2,
+    "peso_kg": 5.1282,
+    "talla_cm": 57.0673,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 3,
+    "peso_kg": 5.8458,
+    "talla_cm": 59.8029,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 4,
+    "peso_kg": 6.4237,
+    "talla_cm": 62.0899,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 5,
+    "peso_kg": 6.8985,
+    "talla_cm": 64.0301,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 6,
+    "peso_kg": 7.297,
+    "talla_cm": 65.7311,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 7,
+    "peso_kg": 7.6422,
+    "talla_cm": 67.2873,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 8,
+    "peso_kg": 7.9487,
+    "talla_cm": 68.7498,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 9,
+    "peso_kg": 8.2254,
+    "talla_cm": 70.1435,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 10,
+    "peso_kg": 8.48,
+    "talla_cm": 71.4818,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 11,
+    "peso_kg": 8.7192,
+    "talla_cm": 72.771,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 12,
+    "peso_kg": 8.9481,
+    "talla_cm": 74.015,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 13,
+    "peso_kg": 9.1699,
+    "talla_cm": 75.2176,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 14,
+    "peso_kg": 9.387,
+    "talla_cm": 76.3817,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 15,
+    "peso_kg": 9.6008,
+    "talla_cm": 77.5099,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 16,
+    "peso_kg": 9.8124,
+    "talla_cm": 78.6055,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 17,
+    "peso_kg": 10.0226,
+    "talla_cm": 79.671,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 18,
+    "peso_kg": 10.2315,
+    "talla_cm": 80.7079,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 19,
+    "peso_kg": 10.4393,
+    "talla_cm": 81.7182,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 20,
+    "peso_kg": 10.6464,
+    "talla_cm": 82.7036,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 21,
+    "peso_kg": 10.8534,
+    "talla_cm": 83.6654,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 22,
+    "peso_kg": 11.0608,
+    "talla_cm": 84.604,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 23,
+    "peso_kg": 11.2688,
+    "talla_cm": 85.5202,
+    "tipo_medicion": "LONGITUD_ACOSTADO"
+  },
+  {
+    "sexo": "F",
+    "meses": 24,
+    "peso_kg": 11.4775,
+    "talla_cm": 85.7153,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 25,
+    "peso_kg": 11.6864,
+    "talla_cm": 86.5904,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 26,
+    "peso_kg": 11.8947,
+    "talla_cm": 87.4462,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 27,
+    "peso_kg": 12.1015,
+    "talla_cm": 88.283,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 28,
+    "peso_kg": 12.3059,
+    "talla_cm": 89.1004,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 29,
+    "peso_kg": 12.5073,
+    "talla_cm": 89.8991,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 30,
+    "peso_kg": 12.7055,
+    "talla_cm": 90.6797,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 31,
+    "peso_kg": 12.9006,
+    "talla_cm": 91.443,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 32,
+    "peso_kg": 13.093,
+    "talla_cm": 92.1906,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 33,
+    "peso_kg": 13.2837,
+    "talla_cm": 92.9239,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 34,
+    "peso_kg": 13.4731,
+    "talla_cm": 93.6444,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 35,
+    "peso_kg": 13.6618,
+    "talla_cm": 94.3533,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 36,
+    "peso_kg": 13.8503,
+    "talla_cm": 95.0515,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 37,
+    "peso_kg": 14.0385,
+    "talla_cm": 95.7399,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 38,
+    "peso_kg": 14.2265,
+    "talla_cm": 96.4187,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 39,
+    "peso_kg": 14.414,
+    "talla_cm": 97.0885,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 40,
+    "peso_kg": 14.601,
+    "talla_cm": 97.7493,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 41,
+    "peso_kg": 14.7873,
+    "talla_cm": 98.4015,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 42,
+    "peso_kg": 14.9727,
+    "talla_cm": 99.0448,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 43,
+    "peso_kg": 15.1573,
+    "talla_cm": 99.6795,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 44,
+    "peso_kg": 15.341,
+    "talla_cm": 100.3058,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 45,
+    "peso_kg": 15.524,
+    "talla_cm": 100.9238,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 46,
+    "peso_kg": 15.7064,
+    "talla_cm": 101.5337,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 47,
+    "peso_kg": 15.8882,
+    "talla_cm": 102.136,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 48,
+    "peso_kg": 16.0697,
+    "talla_cm": 102.7312,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 49,
+    "peso_kg": 16.2511,
+    "talla_cm": 103.3197,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 50,
+    "peso_kg": 16.4322,
+    "talla_cm": 103.9021,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 51,
+    "peso_kg": 16.6133,
+    "talla_cm": 104.4786,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 52,
+    "peso_kg": 16.7942,
+    "talla_cm": 105.0494,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 53,
+    "peso_kg": 16.9748,
+    "talla_cm": 105.6148,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 54,
+    "peso_kg": 17.1551,
+    "talla_cm": 106.1748,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 55,
+    "peso_kg": 17.3347,
+    "talla_cm": 106.7295,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 56,
+    "peso_kg": 17.5136,
+    "talla_cm": 107.2788,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 57,
+    "peso_kg": 17.6916,
+    "talla_cm": 107.8227,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 58,
+    "peso_kg": 17.8686,
+    "talla_cm": 108.3613,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 59,
+    "peso_kg": 18.0445,
+    "talla_cm": 108.8948,
+    "tipo_medicion": "TALLA_DE_PIE"
+  },
+  {
+    "sexo": "F",
+    "meses": 60,
+    "peso_kg": 18.2193,
+    "talla_cm": 109.4233,
+    "tipo_medicion": "TALLA_DE_PIE"
+  }
+]

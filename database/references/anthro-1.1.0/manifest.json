@@ -1,0 +1,60 @@
+{
+  "package": "anthro",
+  "version": "1.1.0",
+  "tag": "v1.1.0",
+  "commit": "80c8db44575425463423ed07bddfd79a3a3301b9",
+  "retrieved_at": "2026-09-10T01:29:35.055589+00:00",
+  "official_entry": "https://www.who.int/tools/child-growth-standards/software",
+  "files": [
+    {
+      "file": "weianthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/weianthro.txt",
+      "bytes": 111813,
+      "sha256": "bc15a6a623dd1d5beaeed1497666332aa54bc4ccd15ff9658c487d79694ab77b"
+    },
+    {
+      "file": "lenanthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/lenanthro.txt",
+      "bytes": 100323,
+      "sha256": "709f7a11881451daf7820f022d363d5bdb93746b5361d6bd9218af6ff838e0c2"
+    },
+    {
+      "file": "bmianthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/bmianthro.txt",
+      "bytes": 120786,
+      "sha256": "78a4364e99303114fb2c458d28d64c6d10ac33832a5d5b2d437bc5cea1c93a0d"
+    },
+    {
+      "file": "wflanthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/wflanthro.txt",
+      "bytes": 43302,
+      "sha256": "ad470cf41b147bd2a16026e57fd17968df7bf746b9f0bf2ff85df95239643778"
+    },
+    {
+      "file": "wfhanthro.txt",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/wfhanthro.txt",
+      "bytes": 37158,
+      "sha256": "0050d31041c2f7d4f8a34f27e8066fd73a24806835b9e4a0de1a7ee46d54d582"
+    },
+    {
+      "file": "growthstandards.R",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/data-raw/growthstandards/growthstandards.R",
+      "bytes": 1520,
+      "sha256": "dbe393802c4ddba886259a9457f52a777467bf3680deeaa24d1b90bc421528be"
+    },
+    {
+      "file": "DESCRIPTION",
+      "url": "https://raw.githubusercontent.com/WorldHealthOrganization/anthro/80c8db44575425463423ed07bddfd79a3a3301b9/DESCRIPTION",
+      "bytes": 1644,
+      "sha256": "4e7137ac51d9e8549e306bcd678acf97de572f8158de6d6ddadb28c62e560430"
+    },
+    {
+      "file": "COPYING-GPL-3",
+      "url": "https://www.r-project.org/Licenses/GPL-3",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    }
+  ],
+  "license": "GPL-3 (declarada en DESCRIPTION)",
+  "license_url": "https://www.r-project.org/Licenses/GPL-3"
+}
